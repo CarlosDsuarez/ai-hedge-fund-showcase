@@ -7,10 +7,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      DATA_MODE: synthetic
-      LLM_MODE: stub
-      ALERTS_MODE: console
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -19,4 +15,11 @@ jobs:
       - run: pip install -r requirements.txt pytest ruff
       - run: ruff check .
       - run: pytest -q
-      - run: python -m backtest.reference_backtest --start 2024-01-01 --end 2024-12-31
+      - name: Offline demo (synthetic data, stub LLM, console alerts)
+        env:
+          DATA_MODE: synthetic
+          LLM_MODE: stub
+          ALERTS_MODE: console
+        run: |
+          python main.py --dry-run
+          python -m backtest.reference_backtest --start 2024-01-01 --end 2024-12-31

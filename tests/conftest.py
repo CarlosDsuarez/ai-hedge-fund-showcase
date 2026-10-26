@@ -258,3 +258,11 @@ def _paper_account(monkeypatch):
     the flag on; tests about the guard itself override it explicitly.
     """
     monkeypatch.setenv("PAPER_TRADING", "true")
+
+
+@pytest.fixture(autouse=True)
+def _real_code_paths(monkeypatch):
+    """Demo switches must not leak into the suite: tests exercise the real
+    fetcher, LLM client and Telegram paths unless a test opts in itself."""
+    for name in ("DATA_MODE", "LLM_MODE", "ALERTS_MODE"):
+        monkeypatch.delenv(name, raising=False)
