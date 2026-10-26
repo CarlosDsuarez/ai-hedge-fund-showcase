@@ -1,0 +1,8 @@
+anthropic>=0.30
+yfinance>=0.2.40
+pandas>=2.0
+numpy>=1.26
+requests>=2.31
+statsmodels>=0.14
+python-dotenv>=1.0
+scipy

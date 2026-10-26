@@ -1,0 +1,15 @@
+line-length = 120
+exclude = ["venv", ".venv", ".claude", "data/cache"]
+
+[lint]
+select = ["E", "F", "B", "UP"]
+ignore = ["E501"]
+
+[lint.per-file-ignores]
+# Environment / sys.path is set up before these imports on purpose.
+"main.py" = ["E402"]
+"data/fetcher.py" = ["E402"]
+"agents/risk_agent.py" = ["E402"]
+"tests/test_dashboard_agents.py" = ["E402"]
+# _ret is defined and called within the same loop iteration.
+"agents/sector_rotation_agent.py" = ["B023"]

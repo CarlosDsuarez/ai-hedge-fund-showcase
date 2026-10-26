@@ -1,0 +1,17 @@
+.env
+__pycache__/
+*.pyc
+.claude/
+logs/
+.DS_Store
+data/cache/
+.Rhistory
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.superpowers/
+*.tar.gz
+.venv/
+.env.*
+!.env.example
